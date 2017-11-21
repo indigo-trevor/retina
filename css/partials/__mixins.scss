@@ -303,13 +303,13 @@
 // END: Conditional breakpoints meant to be used as utility/helper's.
 // START: Retina display queries
 @if $name == "2x" {
-  @media only screen
-    and (-webkit-min-device-pixel-ratio: 2) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
   }
 }
 @if $name == "3x" {
-  @media only screen
-    and (-webkit-min-device-pixel-ratio: 3) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    @content;
   }
 }
 // END: Retina display queries
