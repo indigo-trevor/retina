@@ -5,7 +5,9 @@ const gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),
 	imageMin = require('gulp-imagemin'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify');
+	uglify = require('gulp-uglify'),
+	imgRetina = require('gulp-img-retina'),
+	cssRetina = require('gulp-css-retina');
 
 const paths = {
 	js: ['js/*', 'js/*/*'],
@@ -14,10 +16,17 @@ const paths = {
 	html: ['index.html']
 }
 
+const retinaOpts = {
+    1: '',
+		2: '@2x',
+		3: '@3x'
+};
+
 gulp.task('css', function() {
   return gulp.src('css/styles.scss')
     .pipe(sass().on('error', sass.logError))
 		.pipe(cleanCSS({debug: true}))
+		.pipe(cssRetina(retinaOpts))
     .pipe(gulp.dest('docs'))
 		.pipe(connect.reload());
 });
@@ -44,6 +53,7 @@ gulp.task('watch', function() {
 
 gulp.task('html', function(){
 	gulp.src('index.html')
+		.pipe(imgRetina(retinaOpts))
 		.pipe(gulp.dest('docs'))
     .pipe(connect.reload());
 });

@@ -1,16 +1,10 @@
 .hero {
   position: relative;
   width: 100%;
-  background-image: url(img/car@1x.png);
+  background-image: url("img/car.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100% !important;
   padding-bottom: 66.7%;
-  @include respond-to("2x") {
-    background-image: url(img/car@2x.png);
-  }
-  @include respond-to("3x") {
-    background-image: url(img/car@3x.png);
-  }
 }
 .image-section {
   padding: 45px 0px;
